@@ -30,6 +30,10 @@
                 <input type="text" name="email" class="form-control">
             </div>
             <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="passwd" class="form-control">
+            </div>
+            <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block">Update Data</button>
             </div>
         </form>

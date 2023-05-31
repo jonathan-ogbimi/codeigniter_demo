@@ -35,13 +35,14 @@ class AssetController extends BaseController
 
     public function create_asset()
     {
-        $json_request = json_decode(file_get_contents("php://input"),true);
+        $json_request = json_decode(file_get_contents("php://input"), true);
         $asset = new Asset();
-        $data = [
+        /*$data = [
             'name' => $json_request['name'],
             'description'  => $json_request['description'],
         ];
-        $asset->insert($data);
+        */
+        $asset->insert($json_request);
         $result = [];
         return $this->response->setJSON($json_request);
     }
@@ -57,11 +58,17 @@ class AssetController extends BaseController
     {
         $asset = new Asset();
         $id = $this->request->getVar('id');
+        $post = array();
+        foreach ($_POST as $key => $value) {
+            $post[$key] = $this->request->getVar($key);
+        }
+        /*
         $data = [
             'name' => $this->request->getVar('name'),
             'description'  => $this->request->getVar('description'),
         ];
-        $asset->update($id, $data);
+        */
+        $asset->update($id, $post);
         return $this->response->redirect(site_url('/assets'));
     }
 
