@@ -1,4 +1,4 @@
-# PHP CI Project
+# PHP CI JS One Day Project
 
 ## Brief Description?
 
