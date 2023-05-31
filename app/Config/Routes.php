@@ -62,6 +62,13 @@ $routes->get('edit-asset/(:num)', 'AssetController::singleAsset/$1',['filter' =>
 $routes->post('update-asset', 'AssetController::update',['filter' => 'authGuard']);
 $routes->get('delete-asset/(:num)', 'AssetController::delete/$1',['filter' => 'authGuard']);
 
+// REST APIs
+$routes->group('api', static function ($routes) {
+    $routes->post('asset', 'AssetController::create_asset');
+    //$routes->post('blog', 'Admin\Blog::index');
+});
+
+
 
 /*
  * --------------------------------------------------------------------

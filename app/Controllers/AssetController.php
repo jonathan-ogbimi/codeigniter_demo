@@ -31,11 +31,25 @@ class AssetController extends BaseController
         $asset->insert($data);
         return $this->response->redirect(site_url('/assets'));
     }
+
+
+    public function create_asset()
+    {
+        $json_request = json_decode(file_get_contents("php://input"),true);
+        $asset = new Asset();
+        $data = [
+            'name' => $json_request['name'],
+            'description'  => $json_request['description'],
+        ];
+        $asset->insert($data);
+        $result = [];
+        return $this->response->setJSON($json_request);
+    }
     // show single Asset
     public function singleAsset($id = null)
     {
-        $Asset = new Asset();
-        $data['asset_obj'] = $Asset->where('id', $id)->first();
+        $asset = new Asset();
+        $data['asset_obj'] = $asset->where('id', $id)->first();
         return view('assets/edit_asset', $data);
     }
     // update Asset data
