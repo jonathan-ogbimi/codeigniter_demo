@@ -1,0 +1,4 @@
+# This tutotial for how to run
+https://www.positronx.io/codeigniter-crud-with-bootstrap-and-mysql-example/
+# To run the demo , run this from base directory
+php spark serve
