@@ -7,7 +7,12 @@ A simple Codeigniter Project
 ## Installation & updates
 
 Run  `composer update` to download and update Codeigniter and other dependencies
-Run the sql file to iititalize database tables and seet data
+Run the sql files in the sql folder to iniitalize database tables
+Use the test account to login
+
+username: jonathan.ogbimi@gmail.com
+password: secret
+
 
 ## Setup
 
