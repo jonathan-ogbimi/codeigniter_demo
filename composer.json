@@ -1,7 +1,7 @@
 {
     "name": "codeigniter4/appstarter",
     "type": "project",
-    "description": "CodeIgniter4 starter app",
+    "description": "CodeIgniter4 Demo App",
     "homepage": "https://codeigniter.com",
     "license": "MIT",
     "require": {
