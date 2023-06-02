@@ -17,6 +17,20 @@ class AssetController extends BaseController
             . view('templates/footer');
         //return view('assets/asset_view', $data);
     }
+
+    public function get()
+    {
+
+        $asset = new Asset();
+        $result = $asset->orderBy('id', 'DESC')->findAll();
+        return $this->response->setJSON($result);
+        /*
+        return view('templates/header', $data)
+            . view('assets/asset_view', $data)
+            . view('templates/footer');
+            */
+        //return view('assets/asset_view', $data);
+    }
     // add Asset form
     public function create()
     {
@@ -43,7 +57,7 @@ class AssetController extends BaseController
     {
         $json_request = json_decode(file_get_contents("php://input"), true);
         $asset = new Asset();
-       
+
         $asset->insert($json_request);
         $result = [];
         return $this->response->setJSON($json_request);

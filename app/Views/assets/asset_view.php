@@ -1,5 +1,6 @@
-   <div class="mt-3">
-      <table class="table table-bordered ireport styled-table" id="assets-list">
+
+<div class="mt-3">
+   <table class="table table-bordered ireport styled-table" id="users-list">
          <thead>
             <tr>
                <th>Asset Id</th>
@@ -37,7 +38,7 @@
                <?php endforeach; ?>
             <?php endif; ?>
          </tbody>
-      </table>
+   </table>
 </div>
 
 

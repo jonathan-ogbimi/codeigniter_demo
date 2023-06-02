@@ -47,25 +47,26 @@ $routes->get('/signin', 'SigninController::index');
 
 // Codeigniter SLAM Demo
 // Users
-$routes->get('users', 'UserController::index',['filter' => 'authGuard']);
-$routes->get('add-user', 'UserController::create',['filter' => 'authGuard']);
-$routes->post('create-user', 'UserController::store',['filter' => 'authGuard']);
-$routes->get('edit-user/(:num)', 'UserController::singleUser/$1',['filter' => 'authGuard']);
-$routes->post('update-user', 'UserController::update',['filter' => 'authGuard']);
-$routes->get('delete-user/(:num)', 'UserController::delete/$1',['filter' => 'authGuard']);
+$routes->get('users', 'UserController::index', ['filter' => 'authGuard']);
+$routes->get('add-user', 'UserController::create', ['filter' => 'authGuard']);
+$routes->post('create-user', 'UserController::store', ['filter' => 'authGuard']);
+$routes->get('edit-user/(:num)', 'UserController::singleUser/$1', ['filter' => 'authGuard']);
+$routes->post('update-user', 'UserController::update', ['filter' => 'authGuard']);
+$routes->get('delete-user/(:num)', 'UserController::delete/$1', ['filter' => 'authGuard']);
 
 // Assets
-$routes->get('assets', 'AssetController::index',['filter' => 'authGuard']);
-$routes->get('add-asset', 'AssetController::create',['filter' => 'authGuard']);
-$routes->post('create-asset', 'AssetController::store',['filter' => 'authGuard']);
-$routes->get('edit-asset/(:num)', 'AssetController::singleAsset/$1',['filter' => 'authGuard']);
-$routes->post('update-asset', 'AssetController::update',['filter' => 'authGuard']);
-$routes->get('delete-asset/(:num)', 'AssetController::delete/$1',['filter' => 'authGuard']);
+$routes->get('assets', 'AssetController::index', ['filter' => 'authGuard']);
+$routes->get('add-asset', 'AssetController::create', ['filter' => 'authGuard']);
+$routes->post('create-asset', 'AssetController::store', ['filter' => 'authGuard']);
+$routes->get('edit-asset/(:num)', 'AssetController::singleAsset/$1', ['filter' => 'authGuard']);
+$routes->post('update-asset', 'AssetController::update', ['filter' => 'authGuard']);
+$routes->get('delete-asset/(:num)', 'AssetController::delete/$1', ['filter' => 'authGuard']);
 
 // REST APIs
 $routes->group('api', static function ($routes) {
     $routes->post('asset', 'AssetController::create_asset');
     $routes->put('asset', 'AssetController::update_asset');
+    $routes->get('asset', 'AssetController::get');
     //$routes->post('blog', 'Admin\Blog::index');
 });
 

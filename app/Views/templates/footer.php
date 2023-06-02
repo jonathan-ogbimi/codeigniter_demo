@@ -10,5 +10,81 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="text/javascript" src="/js/custom.js"></script>
+<script>
+    var application = new Vue({
+        el: '#app',
+        data: {
+            assets: [],
+            allData: '',
+            myModel: false,
+            actionButton: 'Insert',
+            updateBtnLabel: 'Apply Changes',
+            createBtnLabel: 'Create',
+        },
+        methods: {
+            getAssets: function() {
+                alert('Getting assets');
+                var endpoint = "/api/asset";
+                axios.get(endpoint).then(function(response) {
+                    /* 
+                    console.log(response.data);
+                    application.allData = response.data;
+                    */
+                    application.allData = response.data;
+                    assets = response.data;
+                    console.log(assets);
+                    //console.log(application.allData);
+                });
+            },
+            openModel: function() {
+
+            },
+            createAsset: function(e) {
+                var formData = $("form").serializeJSON();
+                console.log(formData);
+                var encoded = JSON.stringify(formData);
+                var data = encoded;
+                //alert(data);
+                console.log(data);
+                var endpoint = "/api/asset";
+                axios.post(endpoint, data).then(function(response, e) {
+                    alertify.alert('Status', 'Asset created successfully!', function(e) {
+
+                        $("#asset_form").trigger("reset");
+                    });
+                });
+                e.preventDefault();
+
+            },
+            updateAsset: function(e) {
+                var formData = $("form").serializeJSON();
+                console.log(formData);
+                var encoded = JSON.stringify(formData);
+                var data = encoded;
+                //alert(data);
+                console.log(data);
+                var endpoint = "/api/asset";
+                axios.put(endpoint, data).then(function(response, e) {
+                    alertify.alert('Status', 'Asset updated successfully!', function(e) {
+
+                    });
+                });
+                e.preventDefault();
+
+            },
+            fetchData: function(id) {
+
+            },
+            deleteData: function(id) {},
+            created: function() {
+                this.getAssets()
+            },
+            mounted: function() {
+                this.getAssets()
+            }
+        }
+    });
+</script>
 </body>
+
 </html>
