@@ -12,12 +12,18 @@ class AssetController extends BaseController
 
         $asset = new Asset();
         $data['assets'] = $asset->orderBy('id', 'DESC')->findAll();
-        return view('assets/asset_view', $data);
+        return view('templates/header', $data)
+            . view('assets/asset_view', $data)
+            . view('templates/footer');
+        //return view('assets/asset_view', $data);
     }
     // add Asset form
     public function create()
     {
-        return view('assets/add_asset');
+        return view('templates/header')
+            . view('assets/add_asset')
+            . view('templates/footer');
+        //return view('assets/add_asset');
     }
 
     // insert data
@@ -37,11 +43,7 @@ class AssetController extends BaseController
     {
         $json_request = json_decode(file_get_contents("php://input"), true);
         $asset = new Asset();
-        /*$data = [
-            'name' => $json_request['name'],
-            'description'  => $json_request['description'],
-        ];
-        */
+       
         $asset->insert($json_request);
         $result = [];
         return $this->response->setJSON($json_request);
@@ -51,7 +53,10 @@ class AssetController extends BaseController
     {
         $asset = new Asset();
         $data['asset_obj'] = $asset->where('id', $id)->first();
-        return view('assets/edit_asset', $data);
+        return view('templates/header', $data)
+            . view('assets/edit_asset', $data)
+            . view('templates/footer');
+        //return view('assets/edit_asset', $data);
     }
     // update Asset data
     public function update()
@@ -62,14 +67,18 @@ class AssetController extends BaseController
         foreach ($_POST as $key => $value) {
             $post[$key] = $this->request->getVar($key);
         }
-        /*
-        $data = [
-            'name' => $this->request->getVar('name'),
-            'description'  => $this->request->getVar('description'),
-        ];
-        */
         $asset->update($id, $post);
         return $this->response->redirect(site_url('/assets'));
+    }
+
+    public function update_asset()
+    {
+        $asset = new Asset();
+        $json_request = json_decode(file_get_contents("php://input"), true);
+        $id = $json_request["id"];
+        $asset->update($id, $json_request);
+        return $this->response->setJSON($json_request);
+        //return $this->response->redirect(site_url('/assets'));
     }
 
     // delete Asset

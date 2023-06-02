@@ -12,7 +12,10 @@ class UserController extends BaseController
         #return 'Users page';
         $user = new User();
         $data['users'] = $user->orderBy('id', 'DESC')->findAll();
-        return view('users/user_view', $data);
+        return view('templates/header', $data)
+        . view('users/user_view', $data)
+        . view('templates/footer');
+       
     }
     // add user form
     public function create()

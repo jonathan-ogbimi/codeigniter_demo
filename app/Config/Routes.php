@@ -65,6 +65,7 @@ $routes->get('delete-asset/(:num)', 'AssetController::delete/$1',['filter' => 'a
 // REST APIs
 $routes->group('api', static function ($routes) {
     $routes->post('asset', 'AssetController::create_asset');
+    $routes->put('asset', 'AssetController::update_asset');
     //$routes->post('blog', 'Admin\Blog::index');
 });
 
