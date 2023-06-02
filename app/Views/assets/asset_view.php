@@ -1,5 +1,5 @@
    <div class="mt-3">
-      <table class="table table-bordered ireport" id="assets-list">
+      <table class="table table-bordered ireport styled-table" id="assets-list">
          <thead>
             <tr>
                <th>Asset Id</th>

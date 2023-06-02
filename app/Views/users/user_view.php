@@ -1,6 +1,6 @@
 
 <div class="mt-3">
-   <table class="table table-bordered ireport" id="users-list">
+   <table class="table table-bordered ireport styled-table" id="users-list">
       <thead>
          <tr>
             <!--th>User Id</th-->
